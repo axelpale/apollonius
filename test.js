@@ -12,6 +12,15 @@ test('basic apollonius', (t) => {
   t.ok(c1.r > 3, 'should be larger than three')
   t.ok(c1.r < 4, 'should be smaller than four')
 
+  // The usage example in README
+  const cex = apollonius({ x: 3, y: 2, r: 1 }, { x: 7, y: 2, r: 2 }, { x: 3, y: 5, r: 1 })
+  t.ok(cex.x > 4.3, 'example circle x lower')
+  t.ok(cex.x < 4.4, 'example circle x upper')
+  t.ok(cex.y > 3.4, 'example circle y lower')
+  t.ok(cex.y < 3.6, 'example circle y upper')
+  t.ok(cex.r > 1.0, 'example circle r lower')
+  t.ok(cex.r < 1.1, 'example circle r upper')
+
   // Two concentric zero circles with gap to a non-zero circle.
   const c2 = apollonius({ x: 0, y: 0, r: 0 }, { x: 0, y: 0, r: 0 }, { x: 6, y: 0, r: 2 })
   t.deepEqual(c2, { x: 2, y: 0, r: 2 }, 'should be half of the gap')
