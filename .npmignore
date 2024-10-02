@@ -1,0 +1,12 @@
+node_modules
+
+/.github
+/doc
+/test
+
+demo.html
+test.js
+
+.DS_Store
+.gitignore
+package-lock.json

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tangent Circle of Apollonius</title>
+    <style>
+      canvas {
+        /* Prevent page scroll while dragging circles. */
+        touch-action: none;
+      }
+      form {
+        max-width: 500px;
+      }
+      .info {
+        margin-top: 0;
+        float: right;
+        font-style: italic;
+        color: #999;
+      }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="500" height="500" style="border:1px solid #000000;"></canvas>
+    <form>
+      <p id="info" class="info"></p>
+      <label for="aradius">Radius of the <span style="color: red;">Red</span> Circle:</label>
+      <input type="number" id="aradius" name="aradius" min="0" max="600" value="50" /><br>
+      <label for="bradius">Radius of the <span style="color: green;">Green</span> Circle:</label>
+      <input type="number" id="bradius" name="bradius" min="0" max="600" value="80" /><br>
+      <label for="cradius">Radius of the <span style="color: blue;">Blue</span> Circle:</label>
+      <input type="number" id="cradius" name="cradius" min="0" max="600" value="130" /><br>
+
+      <span>Tangency of the <span style="color: red;">Red</span> Circle:</span>
+      <input type="radio" id="aexternal" name="atangency" value="external" checked />
+      <label for="aexternal">external</label>
+      <input type="radio" id="ainternal" name="atangency" value="internal" />
+      <label for="ainternal">internal</label><br>
+      
+      <span>Tangency of the <span style="color: green;">Green</span> Circle:</span>
+      <input type="radio" id="bexternal" name="btangency" value="external" checked />
+      <label for="bexternal">external</label>
+      <input type="radio" id="binternal" name="btangency" value="internal" />
+      <label for="binternal">internal</label><br>
+      
+      <span>Tangency of the <span style="color: blue;">Blue</span> Circle:</span>
+      <input type="radio" id="cexternal" name="ctangency" value="external" checked />
+      <label for="cexternal">external</label>
+      <input type="radio" id="cinternal" name="ctangency" value="internal" />
+      <label for="cinternal">internal</label>
+    </form>
+    <p style="max-width: 500px;">&#9432; This interactive app demonstrates a function
+      that finds a circle (<span style="color: gray;">gray</span>) that is tangent to, i.e touching, three known circles
+      (<span style="color: red;">red</span>, <span style="color: green;">green</span>, <span style="color: blue;">blue</span>).
+      You can drag the known circles around using the mouse or touch.
+      The result is one of the eight solutions to the <a href="https://en.wikipedia.org/wiki/Problem_of_Apollonius">problem of Apollonius</a>.
+      The function will be a part of a circle packing algorithm.
+      The resulting circle packing can then be applied to data visualization.
+      <a href="https://maxima.sourceforge.io/">Maxima</a> was used during formulation.
+      Some ChatGPT was used to generate an empty canvas app.
+      <a href="https://www.akselipalen.com">Akseli Palén</a>, 2024.
+    </p>
+    <script>
+        const epsilon = 0.000000001
+        const findApolloniusTangent = (c1, c2, c3) => {
+          // Find a circle that is externally tangent to the three circles c1,c2,c3.
+          // Returns null if no such circle exists on the real plane.
+
+          // Circle differences
+          const dx12 = c2.x - c1.x
+          const dx23 = c3.x - c2.x
+          const dx31 = c1.x - c3.x
+          const dy12 = c2.y - c1.y
+          const dy23 = c3.y - c2.y
+          const dy31 = c1.y - c3.y
+          // Circle expressions of form x^2 + y^2 - r^2
+          const g1 = c1.x * c1.x + c1.y * c1.y - c1.r * c1.r
+          const g2 = c2.x * c2.x + c2.y * c2.y - c2.r * c2.r
+          const g3 = c3.x * c3.x + c3.y * c3.y - c3.r * c3.r
+          // Coefficients for the coordinates x=(a+b*r)/D, y=(c+d*r)/D
+          // Determinant (denominator)
+          const D = 2 * (c1.y * dx23 + c2.y * dx31 + c3.y * dx12)
+          // Special case: determinant is zero.
+          if (Math.abs(D) < epsilon) return null
+          const a = -(dy23 * g1 + dy31 * g2 + dy12 * g3)
+          const b = 2 * (c1.r * dy23 + c2.r * dy31 + c3.r * dy12)
+          const c = dx23 * g1 + dx31 * g2 + dx12 * g3
+          const d = -2 * (c1.r * dx23 + c2.r * dx31 + c3.r * dx12)
+          // We solve r via a quadratic formula r=(-Q±sqrt(Q^2-P*R))/P
+          // We use c1 as an anchor.
+          const dx = D * c1.x - a
+          const dy = D * c1.y - c
+          const dr = D * c1.r
+          // Coefficients
+          const P = b * b + d * d - D * D
+          const Q = b * dx + d * dy + D * dr
+          const R = dx * dx + dy * dy - dr * dr
+          // Special case: quadratic formula denominator is zero.
+          if (Math.abs(P) < epsilon) return null
+          // Discriminant
+          let disc = Q * Q - P * R
+          // Special case: discriminant is negative. Deal with floating point issues.
+          if (Math.abs(disc) < epsilon) disc = 0
+          if (disc < 0) return null
+          // Find the target radius
+          const r = (Q - Math.sqrt(disc)) / P
+          // Find the target circle center
+          const x = (a + b * r) / D
+          const y = (c + d * r) / D
+          // Return the circle
+          return { x, y, r }
+        }
+
+        const circles = [
+          {
+            x: 160,
+            y: 180,
+            r: 50,
+            color: 'red'
+          },
+          {
+            x: 330,
+            y: 160,
+            r: 100,
+            color: 'green'
+          },
+          {
+            x: 270,
+            y: 500,
+            r: 200,
+            color: 'blue'
+          }
+        ]
+
+        // Get the canvas element and its context
+        const canvas = document.getElementById('canvas')
+        const context = canvas.getContext('2d')
+        const info = document.getElementById('info')
+
+        // Function to draw a circle
+        function drawCircle(circle, color) {
+          const x = circle.x
+          const y = circle.y
+          const radius = circle.r
+          context.beginPath()
+          context.arc(x, y, radius, 0, 2 * Math.PI, false)
+          context.fillStyle = color
+          context.fill()
+          context.stroke()
+        }
+
+        function drawCircles() {
+          context.clearRect(0, 0, canvas.width, canvas.height);
+
+          const c0 = circles[0]
+          const c1 = circles[1]
+          const c2 = circles[2]
+          const c0hat = { x: c0.x, y: c0.y, r: c0.tangency * c0.r }
+          const c1hat = { x: c1.x, y: c1.y, r: c1.tangency * c1.r }
+          const c2hat = { x: c2.x, y: c2.y, r: c2.tangency * c2.r }
+          const tan = findApolloniusTangent(c0hat, c1hat, c2hat)
+          if (tan && tan.r >= 0) {
+            drawCircle(tan, 'gray')
+            info.innerHTML = 'Radius: ' + tan.r.toFixed(0)
+          } else {
+            info.innerHTML = 'Radius: N/A'
+          }
+
+          for (let circle of circles) {
+            drawCircle(circle, circle.color)
+          }
+        }
+
+        function isPointInCircle(x, y, circle) {
+          const dx = x - circle.x
+          const dy = y - circle.y
+          return dx * dx + dy * dy <= circle.r * circle.r
+        }
+
+        // Dragging interaction
+        let isDragging = false
+        let draggedCircle = null
+        let offsetX, offsetY
+
+        canvas.addEventListener('pointerdown', (e) => {
+          const mouseX = e.offsetX
+          const mouseY = e.offsetY
+          const precedence = circles.slice().reverse() // first drawn gets last input
+          for (let circle of precedence) {
+            if (isPointInCircle(mouseX, mouseY, circle)) {
+              isDragging = true
+              draggedCircle = circle
+              offsetX = mouseX - circle.x
+              offsetY = mouseY - circle.y
+              break
+            }
+          }
+        })
+
+        canvas.addEventListener('pointermove', (e) => {
+          if (isDragging) {
+            const mouseX = e.offsetX
+            const mouseY = e.offsetY
+            draggedCircle.x = mouseX - offsetX
+            draggedCircle.y = mouseY - offsetY
+            drawCircles()
+          }
+        })
+
+        canvas.addEventListener('pointerup', () => {
+          isDragging = false
+          draggedCircle = null
+        })
+
+        // Form interaction
+        const inputARadius = document.getElementById('aradius')
+        const inputBRadius = document.getElementById('bradius')
+        const inputCRadius = document.getElementById('cradius')
+        const inputAExternal = document.getElementById('aexternal')
+        const inputAInternal = document.getElementById('ainternal')
+        const inputBExternal = document.getElementById('bexternal')
+        const inputBInternal = document.getElementById('binternal')
+        const inputCExternal = document.getElementById('cexternal')
+        const inputCInternal = document.getElementById('cinternal')
+        const readForm = () => {
+          circles[0].r = parseInt(inputARadius.value)
+          circles[1].r = parseInt(inputBRadius.value)
+          circles[2].r = parseInt(inputCRadius.value)
+          circles[0].tangency = (inputAExternal.checked ? 1 : -1)
+          circles[1].tangency = (inputBExternal.checked ? 1 : -1)
+          circles[2].tangency = (inputCExternal.checked ? 1 : -1)
+        }
+        const refresh = () => {
+          readForm()
+          drawCircles()
+        }
+        inputARadius.addEventListener('change', refresh)
+        inputBRadius.addEventListener('change', refresh)
+        inputCRadius.addEventListener('change', refresh)
+        inputAExternal.addEventListener('change', refresh)
+        inputAInternal.addEventListener('change', refresh)
+        inputBExternal.addEventListener('change', refresh)
+        inputBInternal.addEventListener('change', refresh)
+        inputCExternal.addEventListener('change', refresh)
+        inputCInternal.addEventListener('change', refresh)
+
+        // Initial drawing
+        refresh()
+    </script>
+</body>
+</html>
