@@ -1,6 +1,8 @@
 # apollonius
 
-This function finds a circle touching three known circles, known as [Apollonius' problem](https://en.wikipedia.org/wiki/Problem_of_Apollonius). In other words, it finds a circle that is *tangent to* each of the known three circles regardless of their positions, overlap, or radii.
+![Figure: Tangent Circles](doc/example.png "Find a circle that is tangent to three others.")
+
+The `apollonius` function finds a circle touching three known circles, known as [Apollonius' problem](https://en.wikipedia.org/wiki/Problem_of_Apollonius). In other words, it finds a circle that is *tangent to* each of the known three circles regardless of their positions, overlap, or radii.
 
 Because a circle can be either internally or externally tangent to another circle, the problem of Apollonius has eight solutions, one for each combination of tangency rules of the three circles. The function here finds one solution at a time but can be used to find all eight.
 
