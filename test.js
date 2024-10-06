@@ -12,7 +12,7 @@ test('basic apollonius', (t) => {
   t.ok(c1.r > 3, 'should be larger than three')
   t.ok(c1.r < 4, 'should be smaller than four')
 
-  // The usage example in README
+  // The primary usage example in README
   const cex = apollonius({ x: 3, y: 2, r: 1 }, { x: 7, y: 2, r: 2 }, { x: 3, y: 5, r: 1 })
   t.ok(cex.x > 4.3, 'example circle x lower')
   t.ok(cex.x < 4.4, 'example circle x upper')
@@ -20,6 +20,15 @@ test('basic apollonius', (t) => {
   t.ok(cex.y < 3.6, 'example circle y upper')
   t.ok(cex.r > 1.0, 'example circle r lower')
   t.ok(cex.r < 1.1, 'example circle r upper')
+
+  // The usage example in README for internal tangency:
+  const cin = apollonius({ x: 3, y: 2, r: -1 }, { x: 7, y: 2, r: 2 }, { x: 3, y: 5, r: -1 })
+  t.ok(cin.x > 2.7, 'example circle x lower')
+  t.ok(cin.x < 2.8, 'example circle x upper')
+  t.ok(cin.y > 3.4, 'example circle y lower')
+  t.ok(cin.y < 3.6, 'example circle y upper')
+  t.ok(cin.r > 2.5, 'example circle r lower')
+  t.ok(cin.r < 2.6, 'example circle r upper')
 
   // Two concentric zero circles with gap to a non-zero circle.
   const c2 = apollonius({ x: 0, y: 0, r: 0 }, { x: 0, y: 0, r: 0 }, { x: 6, y: 0, r: 2 })
