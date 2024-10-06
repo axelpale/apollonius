@@ -8,6 +8,7 @@ Because a circle can be either internally or externally tangent to another circl
 
 The function is extremely efficient. It has time complexity of O(1) and does not call any trigonometric functions.
 
+
 ## Usage
 
 Install via NPM or Yarn:
@@ -49,6 +50,19 @@ const c = apollonius(c1, c2, c3)
 The code above is illustrated below:
 
 ![Figure: Internally Tangent Circles](doc/example_internal.png "The result circle must be internally tangent to the circles 1 and 3 and externally tangent to the circle 2.")
+
+The resulting circle is internally tangent to the known circles `c1` and `c3` and externally tangent to the known circle `c2`. Note that while the known circles can have negative radii, the output circle always has positive or zero radius.
+
+
+## Special cases
+
+The fourth circle cannot be found for some configurations of known circles. These configurations may appear when there are:
+
+- **nested circles:** a circle cannot be internally or externally tangent two or more nested circles at the same time.
+- **identical circles along a line:** when three same-size circles are arranged along a straight line, the radius of the tangent circle would go to infinity.
+
+If the fourth circle cannot be found, the function will return `null`.
+
 
 ## License
 
