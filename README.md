@@ -43,12 +43,12 @@ const c3 = { x: 3, y: 5, r: -1 }  // r < 0, thus internally tangent
 // Compute the fourth circle.
 const c = apollonius(c1, c2, c3)
 
-// Result equals { x: 4.367544..., y: 3.5, r: 1.029822... }
+// Result equals { x: 2.732213..., y: 3.5, r: 2.523715... }
 ```
 
 The code above is illustrated below:
 
-![Figure: Internally Tangent Circles](doc/example.png "The result circle must be internally tangent to the circles 1 and 3 and externally tangent to the circle 2.")
+![Figure: Internally Tangent Circles](doc/example_internal.png "The result circle must be internally tangent to the circles 1 and 3 and externally tangent to the circle 2.")
 
 ## License
 
