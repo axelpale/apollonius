@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "Solves Apollonius' problem by finding a fourth circle tangent to three given circles",
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "lint": "standard",
     "test:unit": "node test.js",
