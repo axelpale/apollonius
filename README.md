@@ -14,7 +14,7 @@ The function is extremely efficient. It has time complexity of O(1) and does not
 
 ## Usage
 
-Install via NPM or Yarn:
+Install via [NPM](https://www.npmjs.com/package/apollonius) or [Yarn](https://yarnpkg.com/package?name=apollonius):
 
 ```
 $ npm install apollonius
