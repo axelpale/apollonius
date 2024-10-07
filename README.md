@@ -57,7 +57,7 @@ The code above is illustrated below:
 The resulting circle is internally tangent to the known circles `c1` and `c3` and externally tangent to the known circle `c2`. Note that while the known circles can have negative radii, the output circle always has positive or zero radius.
 
 
-## Special cases
+### Special cases
 
 The fourth circle cannot be found for some configurations of known circles. These configurations may appear when there are:
 
@@ -65,6 +65,25 @@ The fourth circle cannot be found for some configurations of known circles. Thes
 - **identical circles along a line:** when three same-size circles are arranged along a straight line, the radius of the tangent circle would go to infinity.
 
 If the fourth circle cannot be found, the function will return `null`.
+
+
+## API
+
+### apollonius(c1, c2, c3)
+
+This function finds a circle that is tangent to three other circles. If no such circle exists, it returns null.
+
+Parameters:
+- c1
+  - an object `{ x, y, r }`, representing a circle in 2D. The properties `x`, `y`, and `r` must be real numbers and are allowed to be negative.
+- c2
+  - an object `{ x, y, r }`
+- c3
+  - an object `{ x, y, r }`
+
+Returns:
+- an object `{ x, y, r }`.
+- `null` if no circle can be found or if the radius of the circle is infinite.
 
 
 ## License
