@@ -86,6 +86,29 @@ Returns:
 - `null` if no circle can be found or if the radius of the circle is infinite.
 
 
+## Contribute
+
+Pull requests and [bug reports](https://github.com/axelpale/apollonius/issues) are highly appreciated.
+
+Clone the repository:
+
+    $ git clone git@github.com:axelpale/apollonius.git
+
+Install development tooling:
+
+    $ cd apollonius; npm install
+
+Please test your contribution. Run the test suite:
+
+    $ npm run test
+
+Run only linter:
+
+    $ npm run lint
+
+Thank you.
+
+
 ## License
 
 The apollonius source code is released under [MIT](LICENSE) license.
