@@ -1,4 +1,4 @@
-const apollonius = require('./index')
+const apollonius = require('../index')
 const test = require('tape')
 
 test('basic apollonius', (t) => {

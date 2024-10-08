@@ -6,7 +6,7 @@
   "types": "index.d.ts",
   "scripts": {
     "lint": "standard",
-    "test:unit": "node test.js",
+    "test:unit": "node test/index.js",
     "test": "npm run lint && npm run test:unit",
     "release": "npm test && npm publish"
   },
