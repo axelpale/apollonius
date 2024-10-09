@@ -36,3 +36,6 @@ package-lock.json
 # OS Related
 *.DS_Store
 .idea
+
+# Build artefacts
+test/types.js

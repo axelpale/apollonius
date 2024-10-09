@@ -1,5 +1,5 @@
-const apollonius = require('../index')
-const test = require('tape')
+import apollonius from '../index.js'
+import test from 'tape'
 
 test('basic apollonius', (t) => {
   // Trivial zero circles

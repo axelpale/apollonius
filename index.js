@@ -136,7 +136,7 @@ const dependent = (c1, c2, c3) => {
   return { x, y, r }
 }
 
-module.exports = (c1, c2, c3) => {
+const apollonius = function (c1, c2, c3) {
   // Find a circle that is externally tangent to the three circles c1,c2,c3.
   // If no such circle exists on the real plane, return null.
   // The result is one of the solutions to the problem of Apollonius.
@@ -205,3 +205,5 @@ module.exports = (c1, c2, c3) => {
   // Return the circle
   return { x, y, r }
 }
+
+export default apollonius

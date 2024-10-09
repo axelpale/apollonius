@@ -4,6 +4,8 @@
 
 [![npm version](https://img.shields.io/npm/v/apollonius?color=green)](https://www.npmjs.com/package/apollonius)
 [![license](https://img.shields.io/npm/l/apollonius)](#license)
+![NPM Type Definitions](https://img.shields.io/npm/types/apollonius?color=green)
+
 
 The `apollonius` function finds a circle that touches three known circles. The resulting circle is a solution to the [Problem of Apollonius](https://en.wikipedia.org/wiki/Problem_of_Apollonius). In other words, it finds a circle that is *tangent to* each of the known three circles if such a circle exists and it usually does. The three known circles can be placed freely and are allowed to overlap each other.
 
