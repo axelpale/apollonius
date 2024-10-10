@@ -8,6 +8,5 @@ interface Circle2 {
   r: number;
 }
 
-declare function apollonius(c1: Circle2, c2: Circle2, c3: Circle2): Circle2 | null;
-
-export = apollonius;
+export default function apollonius(c1: Circle2, c2: Circle2, c3: Circle2): Circle2 | null;
+export let epsilon: number;

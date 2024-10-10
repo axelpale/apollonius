@@ -1,4 +1,5 @@
-const epsilon = 0.0000000001 // epsilon from affineplane
+const defaultEpsilon = 0.0000000001 // precision from affineplane
+let epsilon = defaultEpsilon // Modifiable epsilon, exported.
 
 const bitangent = (c1, c2) => {
   // Find a circle that is externally tangent to the circles c1, c2.
@@ -207,3 +208,4 @@ const apollonius = function (c1, c2, c3) {
 }
 
 export default apollonius
+export epsilon
