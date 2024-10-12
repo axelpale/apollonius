@@ -24,7 +24,11 @@
     "geometry",
     "circle",
     "apollonius",
-    "tangent"
+    "tangent",
+    "math",
+    "packing",
+    "layout",
+    "2d"
   ],
   "author": "Akseli Palén <akseli.palen@gmail.com>",
   "license": "MIT",
