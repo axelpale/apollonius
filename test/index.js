@@ -1,5 +1,10 @@
-import apollonius from '../index.js'
+// eslint-disable-next-line import/no-duplicates
+import { apollonius, options } from '../index.js'
 import test from 'tape'
+
+// Test the default import
+// eslint-disable-next-line import/no-duplicates
+import apolloniusFn from '../index.js'
 
 test('basic apollonius', (t) => {
   // Trivial zero circles
@@ -64,6 +69,20 @@ test('linearly dependent apollonius', (t) => {
   const cm = apollonius({ x: 20, y: 0, r: 5 }, { x: 0, y: 0, r: 5 }, { x: 10, y: 0, r: 3 })
   // Read rough limits from a drawing.
   t.deepEqual(cm, ch, 'should be equivalent to the first')
+
+  t.end()
+})
+
+test('default export', (t) => {
+  t.ok(typeof apolloniusFn === 'function', 'should export default fn')
+
+  t.end()
+})
+
+test('library options', (t) => {
+  t.ok(typeof options === 'object', 'options should be available')
+  t.ok(typeof options.epsilon === 'number', 'epsilon should be available')
+  t.ok(options.epsilon > 0, 'epsilon should be positive')
 
   t.end()
 })

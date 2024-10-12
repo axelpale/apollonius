@@ -8,5 +8,9 @@ interface Circle2 {
   r: number;
 }
 
+interface Options {
+  epsilon: number;
+}
+
 export default function apollonius(c1: Circle2, c2: Circle2, c3: Circle2): Circle2 | null;
-export let epsilon: number;
+export const options: Options;
