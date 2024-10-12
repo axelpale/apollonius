@@ -4,13 +4,18 @@
   "description": "Solves Apollonius' problem by finding a fourth circle tangent to three given circles",
   "type": "module",
   "main": "./index.js",
-  "exports": "./index.js",
   "types": "./index.d.ts",
+  "exports": {
+    "import": "./index.js",
+    "require": "./index.cjs"
+  },
   "scripts": {
+    "build": "rollup index.js --file index.cjs --format cjs",
     "lint": "standard",
     "test:unit": "node test/index.js",
-    "test:types": "! tsc test/types.ts",
-    "test": "npm run lint && npm run test:types && npm run test:unit",
+    "test:types": "echo \"Expect error:\" && ! tsc test/types.ts",
+    "test:cjs": "node test/commonjs.cjs",
+    "test": "npm run lint && npm run test:types && npm run build && npm run test:cjs && npm run test:unit",
     "release": "npm test && npm publish"
   },
   "engines": {
@@ -37,6 +42,7 @@
   },
   "homepage": "https://github.com/axelpale/apollonius#readme",
   "devDependencies": {
+    "rollup": "^4.24.0",
     "standard": "^17.1.2",
     "tape": "^5.9.0",
     "typescript": "^5.6.3"

@@ -26,6 +26,7 @@ Specify your three known circles as `{ x, y, r }` objects, where `x` and `y` are
 
 ```
 import apollonius from 'apollonius'
+// OR const apollonius = require('apollonius').default
 
 // Prepare three known circles.
 const c1 = { x: 3, y: 2, r: 1 }
