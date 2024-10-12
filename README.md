@@ -25,7 +25,7 @@ $ npm install apollonius
 Specify your three known circles as `{ x, y, r }` objects, where `x` and `y` are the circle center coordinates and `r` is the radius. Then call the apollonius function with the circles. The order of the circles does not matter.
 
 ```
-import 'apollonius'
+import apollonius from 'apollonius'
 
 // Prepare three known circles.
 const c1 = { x: 3, y: 2, r: 1 }
@@ -43,7 +43,7 @@ The result is a circle object `{ x, y, r }`. By default, the resulting circle is
 ```
 // Prepare circles.
 const c1 = { x: 3, y: 2, r: -1 }  // r < 0, thus internally tangent
-const c2 = { x: 7, y: 2, r: 2 }   // r > 0, thus externally tangent
+const c2 = { x: 7, y: 2, r: 2 }  // externally tangent
 const c3 = { x: 3, y: 5, r: -1 }  // r < 0, thus internally tangent
 
 // Compute the fourth circle.
