@@ -1,5 +1,5 @@
 const defaultEpsilon = 0.0000000001 // precision from affineplane
-const libOptions = {
+const options = {
   epsilon: defaultEpsilon // keep epsilon modifiable
 }
 
@@ -17,7 +17,7 @@ const bitangent = (c1, c2) => {
   const dx = c2.x - c1.x
   const dy = c2.y - c1.y
   const d = Math.sqrt(dx * dx + dy * dy)
-  const epsilon = libOptions.epsilon
+  const epsilon = options.epsilon
 
   if (d < epsilon) {
     // The circles are concentric.
@@ -78,7 +78,7 @@ const dependent = (c1, c2, c3) => {
   const dy23 = c3.y - c2.y
   const dy31 = c1.y - c3.y
 
-  const epsilon = libOptions.epsilon
+  const epsilon = options.epsilon
 
   // First we handle the cases where the circle centers are equal.
   // In these case a solution can be found only when the radii of the circles are equal.
@@ -142,7 +142,7 @@ const dependent = (c1, c2, c3) => {
   return { x, y, r }
 }
 
-export function apollonius (c1, c2, c3) {
+function apollonius (c1, c2, c3) {
   // Find a circle that is externally tangent to the three circles c1,c2,c3.
   // If no such circle exists on the real plane, return null.
   // The result is one of the solutions to the problem of Apollonius.
@@ -158,7 +158,7 @@ export function apollonius (c1, c2, c3) {
   // Return:
   //   a circle2 or null
   //
-  const epsilon = libOptions.epsilon
+  const epsilon = options.epsilon
 
   // Circle differences
   const dx12 = c2.x - c1.x
@@ -211,7 +211,7 @@ export function apollonius (c1, c2, c3) {
   const y = (c + d * r) / D
   // Return the circle
   return { x, y, r }
-}
+};
 
+export { apollonius, options }
 export default apollonius
-export const options = libOptions

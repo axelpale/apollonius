@@ -9,7 +9,7 @@
   "scripts": {
     "lint": "standard",
     "test:unit": "node test/index.js",
-    "test:types": "tsc test/types.ts --esModuleInterop",
+    "test:types": "tsc test/types.ts",
     "test": "npm run lint && npm run test:unit",
     "release": "npm test && npm publish"
   },
