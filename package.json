@@ -1,6 +1,6 @@
 {
   "name": "apollonius",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Solves Apollonius' problem by finding a fourth circle tangent to three given circles",
   "type": "module",
   "main": "./index.js",
