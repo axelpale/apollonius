@@ -11,7 +11,7 @@ The `apollonius` module provides a function to find a circle that touches three 
 
 Because a circle can be either internally or externally tangent to another circle, the problem of Apollonius has eight solutions in total, one for each combination of tangency rules of the three circles. The function here finds only one solution per call but can be used to find all eight.
 
-The function is extremely efficient. It has time complexity of O(1) and does not call any trigonometric functions.
+The function is very efficient. It has time complexity of O(1) and does not call any trigonometric functions.
 
 
 ## Usage
@@ -94,6 +94,10 @@ Parameters:
 Returns:
 - an object `{ x, y, r }` where `r` is always positive or zero.
 - `null` if no tangent circle exists or if the radius of the circle is infinite.
+
+Throws:
+- if any of the input circles are missing.
+- if any of the input circle properties are [NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN) or missing.
 
 ### apollonius.options.epsilon
 

@@ -54,6 +54,22 @@ test('basic apollonius', (t) => {
   t.end()
 })
 
+test('bad input circles', (t) => {
+  t.throws(() => {
+    apollonius({}, {}, {})
+  }, 'should detect bad circles')
+
+  t.throws(() => {
+    apollonius({ x: 0, y: 0, r: 2 }, { x: 9, y: -2, r: 3 }, { x: 6, y: 11, r: 'bad' })
+  }, 'should detect bad radius')
+
+  t.throws(() => {
+    apollonius({ x: 0, y: 0, r: 2 }, { x: 9, y: -2, r: 3 })
+  }, 'should detect missing circle')
+
+  t.end()
+})
+
 test('linearly dependent apollonius', (t) => {
   // Circle centers on the same horizontal line.
   const ch = apollonius({ x: 0, y: 0, r: 5 }, { x: 10, y: 0, r: 3 }, { x: 20, y: 0, r: 5 })

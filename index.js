@@ -158,6 +158,9 @@ function apollonius (c1, c2, c3) {
   // Return:
   //   a circle2 or null
   //
+  // Throws:
+  //   if one or more of the given circles have missing or invalid properties.
+  //
   const epsilon = options.epsilon
 
   // Circle differences
@@ -167,6 +170,17 @@ function apollonius (c1, c2, c3) {
   const dy12 = c2.y - c1.y
   const dy23 = c3.y - c2.y
   const dy31 = c1.y - c3.y
+  // Circle expressions of form x^2 + y^2 - r^2
+  const g1 = c1.x * c1.x + c1.y * c1.y - c1.r * c1.r
+  const g2 = c2.x * c2.x + c2.y * c2.y - c2.r * c2.r
+  const g3 = c3.x * c3.x + c3.y * c3.y - c3.r * c3.r
+
+  // Validate: detect bad input circles.
+  if (isNaN(g1) || isNaN(g2) || isNaN(g3)) {
+    throw new Error('Invalid input circle was detected.')
+  }
+
+  // Special case: linearly dependent circles
   // If the vector between circles are linearly dependent i.e. their centers are along the same line,
   // we cannot solve the circle with the common method. We need to check their independency.
   // For a triangle of vectors, it is enough to check independecy of any two vectors.
@@ -175,15 +189,13 @@ function apollonius (c1, c2, c3) {
     // The circle centers are linearly dependent. We solve this separately.
     return dependent(c1, c2, c3)
   }
-  // Circle expressions of form x^2 + y^2 - r^2
-  const g1 = c1.x * c1.x + c1.y * c1.y - c1.r * c1.r
-  const g2 = c2.x * c2.x + c2.y * c2.y - c2.r * c2.r
-  const g3 = c3.x * c3.x + c3.y * c3.y - c3.r * c3.r
+
   // Coefficients for the coordinates x=(a+b*r)/D, y=(c+d*r)/D
   // Determinant (denominator)
   const D = 2 * (c1.y * dx23 + c2.y * dx31 + c3.y * dx12)
   // Special case: determinant is zero.
   if (Math.abs(D) < epsilon) return null
+
   const a = -(dy23 * g1 + dy31 * g2 + dy12 * g3)
   const b = 2 * (c1.r * dy23 + c2.r * dy31 + c3.r * dy12)
   const c = dx23 * g1 + dx31 * g2 + dx12 * g3
@@ -197,13 +209,17 @@ function apollonius (c1, c2, c3) {
   const P = b * b + d * d - D * D
   const Q = b * dx + d * dy + D * dr
   const R = dx * dx + dy * dy - dr * dr
+
   // Special case: quadratic formula denominator is zero.
   if (Math.abs(P) < epsilon) return null
+
   // Discriminant
   let disc = Q * Q - P * R
+
   // Special case: discriminant is negative. Deal with floating point issues.
   if (Math.abs(disc) < epsilon) disc = 0
   if (disc < 0) return null
+
   // Find the target radius
   const r = (Q - Math.sqrt(disc)) / P
   // Find the target circle center
@@ -211,7 +227,7 @@ function apollonius (c1, c2, c3) {
   const y = (c + d * r) / D
   // Return the circle
   return { x, y, r }
-};
+}
 
 // Aliases
 const solve = apollonius
