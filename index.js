@@ -213,5 +213,8 @@ function apollonius (c1, c2, c3) {
   return { x, y, r }
 };
 
-export { apollonius, options }
-export default apollonius
+// Aliases
+const solve = apollonius
+
+export { apollonius, solve, options }
+export default solve

@@ -4,7 +4,7 @@ import test from 'tape'
 
 // Test the default import
 // eslint-disable-next-line import/no-duplicates
-import apolloniusFn from '../index.js'
+import apolloniusDefault from '../index.js'
 
 test('basic apollonius', (t) => {
   // Trivial zero circles
@@ -74,7 +74,7 @@ test('linearly dependent apollonius', (t) => {
 })
 
 test('default export', (t) => {
-  t.ok(typeof apolloniusFn === 'function', 'should export default fn')
+  t.ok(typeof apolloniusDefault === 'function', 'should be the function')
 
   t.end()
 })

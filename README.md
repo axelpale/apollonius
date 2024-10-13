@@ -7,9 +7,9 @@
 ![NPM Type Definitions](https://img.shields.io/npm/types/apollonius?color=green)
 
 
-The `apollonius` function finds a circle that touches three known circles. The resulting circle is a solution to the [Problem of Apollonius](https://en.wikipedia.org/wiki/Problem_of_Apollonius). In other words, it finds a circle that is *tangent to* each of the known three circles if such a circle exists and it usually does. The three known circles can be placed freely and are allowed to overlap each other.
+The `apollonius` module provides a function to find a circle that touches three known circles. The resulting circle is a solution to the [Problem of Apollonius](https://en.wikipedia.org/wiki/Problem_of_Apollonius). In other words, it finds a circle that is *tangent to* each of the known three circles. The function is robust: the three known circles can be placed freely and are allowed to overlap each other.
 
-Because a circle can be either internally or externally tangent to another circle, the problem of Apollonius has eight solutions, one for each combination of tangency rules of the three circles. The function here finds one solution at a time but can be used to find all eight.
+Because a circle can be either internally or externally tangent to another circle, the problem of Apollonius has eight solutions in total, one for each combination of tangency rules of the three circles. The function here finds only one solution per call but can be used to find all eight.
 
 The function is extremely efficient. It has time complexity of O(1) and does not call any trigonometric functions.
 
@@ -22,11 +22,13 @@ Install via [NPM](https://www.npmjs.com/package/apollonius) or [Yarn](https://ya
 $ npm install apollonius
 ```
 
-Specify your three known circles as `{ x, y, r }` objects, where `x` and `y` are the circle center coordinates and `r` is the radius. Then call the apollonius function with the circles. The order of the circles does not matter.
+Specify your three known circles as `{ x, y, r }` objects, where `x` and `y` are the circle center coordinates and `r` is the radius. Then call the function `apollonius.solve` with the circles. The order of the circles does not matter.
 
 ```
-import apollonius from 'apollonius'
-// OR const apollonius = require('apollonius').default
+import * as apollonius from 'apollonius'
+// OR import solve from 'apollonius'
+// OR import { solve } from 'apollonius'
+// OR const apollonius = require('apollonius')
 
 // Prepare three known circles.
 const c1 = { x: 3, y: 2, r: 1 }
@@ -34,12 +36,12 @@ const c2 = { x: 7, y: 2, r: 2 }
 const c3 = { x: 3, y: 5, r: 1 }
 
 // Compute a fourth circle that touches the three.
-const c = apollonius(c1, c2, c3)
+const c = apollonius.solve(c1, c2, c3)
 
 // Result equals { x: 4.367544..., y: 3.5, r: 1.029822... }
 ```
 
-The result is a circle object `{ x, y, r }`. By default, the resulting circle is **externally tangent** to each of the three given circles. To find a circle that is **internally tangent** to some of the circles, specify those circles with negative radius. See below for an example.
+The result is a circle object `{ x, y, r }` or `null` if such a circle cannot be found. By default, the resulting circle is **externally tangent** to each of the three given circles. To find a circle that is **internally tangent** to some of the circles, specify those circles with negative radius. See below for an example.
 
 ```
 // Prepare circles.
@@ -48,7 +50,7 @@ const c2 = { x: 7, y: 2, r: 2 }  // externally tangent
 const c3 = { x: 3, y: 5, r: -1 }  // r < 0, thus internally tangent
 
 // Compute the fourth circle.
-const c = apollonius(c1, c2, c3)
+const c = apollonius.solve(c1, c2, c3)
 
 // Result equals { x: 2.732213..., y: 3.5, r: 2.523715... }
 ```
@@ -77,7 +79,7 @@ The fourth circle may reduce to a point (a circle with zero radius) in some conf
 
 ## API
 
-### apollonius(c1, c2, c3)
+### apollonius.solve(c1, c2, c3)
 
 This function finds a circle that is tangent to three other circles. If no such circle exists, it returns null.
 
@@ -90,8 +92,18 @@ Parameters:
   - an object `{ x, y, r }`
 
 Returns:
-- an object `{ x, y, r }`.
-- `null` if no circle can be found or if the radius of the circle is infinite.
+- an object `{ x, y, r }` where `r` is always positive or zero.
+- `null` if no tangent circle exists or if the radius of the circle is infinite.
+
+### apollonius.options.epsilon
+
+The function `apollonius.solve` handles various (special cases)[#specialcases] by switching to alternative algorithms when certain internal variables turn zero. However, the variables rarely exactly equal zero because of rounding errors caused by floating point arithmetics. Computation with near-zero numbers would cause arbitrary results and therefore a margin of safety is needed.
+
+The `epsilon` defines the numerical margin in which an almost zero number is treated as zero. The default value for epsilon is `1e-10`. You can adjust it if needed. For example, if you know the properties of your circles will be large numbers then a larger epsilon may yield more robust behavior near the special cases:
+
+```
+apollonius.options.epsilon = 1e-4
+```
 
 
 ## Contribute
