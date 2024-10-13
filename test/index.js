@@ -6,6 +6,10 @@ import test from 'tape'
 // eslint-disable-next-line import/no-duplicates
 import apolloniusDefault from '../index.js'
 
+// Test alternative import
+// eslint-disable-next-line import/no-duplicates
+import * as apolloniusModule from '../index.js'
+
 test('basic apollonius', (t) => {
   // Trivial zero circles
   const c0 = apollonius({ x: 0, y: 0, r: 0 }, { x: 0, y: 0, r: 0 }, { x: 0, y: 0, r: 0 })
@@ -75,6 +79,8 @@ test('linearly dependent apollonius', (t) => {
 
 test('default export', (t) => {
   t.ok(typeof apolloniusDefault === 'function', 'should be the function')
+  t.ok(typeof apolloniusModule === 'object', 'should be module object')
+  t.ok(typeof apolloniusModule.solve === 'function', 'should have members')
 
   t.end()
 })
