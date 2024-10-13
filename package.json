@@ -10,7 +10,7 @@
     "require": "./index.cjs"
   },
   "scripts": {
-    "build": "rollup index.js --file index.cjs --format cjs",
+    "build": "rollup --config",
     "lint": "standard",
     "test:unit": "node test/index.js",
     "test:types": "echo \"Expect error:\" && ! tsc test/types.ts",

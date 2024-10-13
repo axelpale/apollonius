@@ -5,7 +5,7 @@ node_modules
 /test
 
 demo.html
-test.js
+rollup.config.js
 
 .DS_Store
 .gitignore
