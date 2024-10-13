@@ -69,6 +69,11 @@ The fourth circle cannot be found for some configurations of known circles. Thes
 
 If the fourth circle cannot be found, the function will return `null`.
 
+The fourth circle may reduce to a point (a circle with zero radius) in some configurations of known circles. These configurations may appear when there are:
+
+- **identical stacked circles:** The known circles are exact copies of each other. Then the externally tangent circle reduces to an arbitrary point on the shared circumference of the known.
+- **circles intersect at a single point:** The known circles share only one common point. Then the externally tangent circle reduces to that point.
+
 
 ## API
 
