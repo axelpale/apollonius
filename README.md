@@ -3,6 +3,7 @@
 ![Figure: Tangent Circles](doc/example.png "Find a circle that is tangent to three others.")
 
 [![npm version](https://img.shields.io/npm/v/apollonius?color=green)](https://www.npmjs.com/package/apollonius)
+[![GitHub Actions workflow status](https://img.shields.io/github/actions/workflow/status/axelpale/apollonius/apollonius-ci.yml)](https://github.com/axelpale/apollonius/actions/workflows/apollonius-ci.yml)
 [![license](https://img.shields.io/npm/l/apollonius)](#license)
 ![NPM Type Definitions](https://img.shields.io/npm/types/apollonius?color=green)
 
