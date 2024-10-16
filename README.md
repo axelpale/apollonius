@@ -56,11 +56,11 @@ const c = apollonius.solve(c1, c2, c3)
 // Result equals { x: 2.732213..., y: 3.5, r: 2.523715... }
 ```
 
-The code above is illustrated below:
+The circle configuration above is illustrated as follows:
 
 ![Figure: Internally Tangent Circles](doc/example_internal.png "The result circle must be internally tangent to the circles 1 and 3 and externally tangent to the circle 2.")
 
-The resulting circle is internally tangent to the known circles `c1` and `c3` and externally tangent to the known circle `c2`. Note that while the known circles can have negative radii, the output circle always has positive or zero radius.
+The resulting circle `c` is internally tangent to the known circles `c1` and `c3` and externally tangent to the known circle `c2`. Note that while the known circles can have negative radii, the output circle always has positive or zero radius.
 
 
 ### Special cases
