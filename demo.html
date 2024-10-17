@@ -112,14 +112,26 @@
           const c1hat = { x: c1.x, y: c1.y, r: c1.tangency * c1.r }
           const c2hat = { x: c2.x, y: c2.y, r: c2.tangency * c2.r }
           const tan = findApolloniusTangent(c0hat, c1hat, c2hat)
+
+          // Render the circles in order of decreasing radius.
+          // This way they do not hide each other.
+          const drawQueue = []
+
+          // Skip cases where the tangent circle cannot be drawn.
           if (tan && tan.r >= 0) {
-            drawCircle(tan, 'gray')
+            tan.color = 'gray'
+            drawQueue.push(tan)
             info.innerHTML = 'Radius: ' + tan.r.toFixed(0)
           } else {
             info.innerHTML = 'Radius: N/A'
           }
 
-          for (let circle of circles) {
+          // Rest of the circles
+          drawQueue.push(c0, c1, c2)
+          // Sort by decreasing radius.
+          drawQueue.sort((c, d) => d.r - c.r)
+
+          for (let circle of drawQueue) {
             drawCircle(circle, circle.color)
           }
         }
