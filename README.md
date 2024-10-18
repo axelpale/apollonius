@@ -108,7 +108,7 @@ The fourth circle cannot be found for some configurations of known circles. The 
 - **nested circles:** a circle cannot be internally or externally tangent two or more nested circles at the same time.
 - **identical circles along a line:** when three same-size circles are arranged along a straight line, the radius of the tangent circle would go to infinity and thus its radial center could not be defined.
 
-These unsolvable configurations are illustrated below:
+These unsolvable configurations are illustrated below. The wicks mark the tangency rules of the circles.
 
 ![Figure: special cases: nested circles and circles along a line](doc/example_special_case_unsolvable.png "a) nested circles; b) circles along a line")
 
