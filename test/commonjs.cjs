@@ -1,4 +1,7 @@
-const apollonius = require('../index.cjs')
+// This file tests that the module is compatible
+// with CommonJS and require()
+//
+const apollonius = require('../dist/index.cjs')
 
 const c1 = { x: 1, y: 2, r: 1 }
 const c2 = { x: 3, y: 2, r: 1 }
