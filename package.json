@@ -4,6 +4,7 @@
   "description": "Solves Apollonius' problem by finding a fourth circle tangent to three given circles",
   "type": "module",
   "main": "./dist/index.cjs",
+  "module": "./index.js",
   "types": "./index.d.ts",
   "exports": {
     "import": "./index.js",
