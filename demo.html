@@ -160,7 +160,7 @@
         canvas.addEventListener('pointerdown', (e) => {
           const mouseX = e.offsetX
           const mouseY = e.offsetY
-          const precedence = circles.slice().reverse() // first drawn gets last input
+          const precedence = circles.slice().sort((c, d) => c.r - d.r) // largest gets last input
           for (let circle of precedence) {
             if (isPointInCircle(mouseX, mouseY, circle)) {
               isDragging = true
