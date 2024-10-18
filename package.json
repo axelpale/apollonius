@@ -30,7 +30,7 @@
     "url": "git+ssh://git@github.com/axelpale/apollonius.git"
   },
   "keywords": [
-    "2d"
+    "2d",
     "math",
     "tangent",
     "circle",
@@ -40,7 +40,7 @@
     "layout",
     "geometry",
     "apollonius",
-    "apollonian",
+    "apollonian"
   ],
   "author": "Akseli Palén <akseli.palen@gmail.com>",
   "license": "MIT",
