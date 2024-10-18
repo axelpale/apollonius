@@ -103,14 +103,16 @@ The resulting circle `c` is internally tangent to the known circles `c1` and `c3
 
 ### Special cases
 
-The fourth circle cannot be found for some configurations of known circles. These configurations may appear when there are:
+The fourth circle cannot be found for some configurations of known circles. The function will then return `null`. These configurations may appear when there are:
 
 - **nested circles:** a circle cannot be internally or externally tangent two or more nested circles at the same time.
-- **identical circles along a line:** when three same-size circles are arranged along a straight line, the radius of the tangent circle would go to infinity.
+- **identical circles along a line:** when three same-size circles are arranged along a straight line, the radius of the tangent circle would go to infinity and thus its radial center could not be defined.
 
-If the fourth circle cannot be found, the function will return `null`.
+These unsolvable configurations are illustrated below:
 
-The fourth circle may reduce to a point (a circle with zero radius) in some configurations of known circles. These configurations may appear when there are:
+![Figure: special cases: nested circles and circles along a line](doc/example_special_case_unsolvable.png "a) nested circles; b) circles along a line")
+
+In addition, the fourth circle may reduce to a point (a circle with zero radius) in some configurations of known circles. These configurations may appear when there are:
 
 - **identical stacked circles:** The known circles are exact copies of each other. Then the externally tangent circle reduces to an arbitrary point on the shared circumference of the known.
 - **circles intersect at a single point:** The known circles share only one common point. Then the externally tangent circle reduces to that point.
