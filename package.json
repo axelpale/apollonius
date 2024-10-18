@@ -1,6 +1,6 @@
 {
   "name": "apollonius",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Solves Apollonius' problem by finding a fourth circle tangent to three given circles",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -33,6 +33,7 @@
     "geometry",
     "circle",
     "apollonius",
+    "apollonian",
     "tangent",
     "math",
     "packing",
