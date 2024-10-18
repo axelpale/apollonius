@@ -15,7 +15,7 @@ Because a circle can be either internally or externally tangent to another circl
 
 The function is very efficient. It has time complexity of *O(1)* and does not call any trigonometric functions.
 
-Try out [the demo!](https://axelpale.github.io/apollonius/demo.html).
+Try out [the demo!](https://axelpale.github.io/apollonius/demo.html)
 
 [Installation](#installation) – [Usage](#usage) – [API](#api) – [Contribute](#contribute)
 
