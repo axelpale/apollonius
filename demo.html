@@ -51,7 +51,7 @@
       <label for="cinternal">internal</label>
     </form>
     <p style="max-width: 500px;">&#9432; This interactive app demonstrates an algorithm
-      that finds a circle (<span style="color: gray;">gray</span>) that is tangent to, i.e touching, three known circles
+      that finds a circle (<span style="color: gray;">gray</span>) that is tangent to, or touching, three known circles
       (<span style="color: red;">red</span>, <span style="color: green;">green</span>, <span style="color: blue;">blue</span>).
       You can drag the known circles around using the mouse or touch.
       The result is one of the eight solutions to the <a href="https://en.wikipedia.org/wiki/Problem_of_Apollonius">problem of Apollonius</a>.
@@ -67,19 +67,22 @@
             x: 160,
             y: 180,
             r: 50,
-            color: 'red'
+            color: 'red',
+            lineDash: []
           },
           {
             x: 330,
             y: 160,
             r: 100,
-            color: 'green'
+            color: 'green',
+            lineDash: []
           },
           {
             x: 270,
             y: 500,
             r: 200,
-            color: 'blue'
+            color: 'blue',
+            lineDash: []
           }
         ]
 
@@ -88,12 +91,20 @@
         const context = canvas.getContext('2d')
         const info = document.getElementById('info')
 
+        // Default canvas style
+        context.lineWidth = 2 // px
+
         // Function to draw a circle
-        function drawCircle(circle, color) {
+        function drawCircle(circle, color, lineDashSegments) {
           const x = circle.x
           const y = circle.y
           const radius = circle.r
           context.beginPath()
+          if (lineDashSegments) {
+            context.setLineDash(lineDashSegments)
+          } else {
+            context.setLineDash([])
+          }
           context.arc(x, y, radius, 0, 2 * Math.PI, false)
           context.fillStyle = color
           context.fill()
@@ -118,6 +129,7 @@
           // Skip cases where the tangent circle cannot be drawn.
           if (tan && tan.r >= 0) {
             tan.color = 'gray'
+            tan.lineDash = [2, 2]
             drawQueue.push(tan)
             info.innerHTML = 'Radius: ' + tan.r.toFixed(0)
           } else {
@@ -130,7 +142,7 @@
           drawQueue.sort((c, d) => d.r - c.r)
 
           for (let circle of drawQueue) {
-            drawCircle(circle, circle.color)
+            drawCircle(circle, circle.color, circle.lineDash)
           }
         }
 
