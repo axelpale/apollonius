@@ -13,7 +13,7 @@ The `apollonius` module provides a function to find a circle that touches three 
 
 Because a circle can be either internally or externally tangent to another circle, the problem of Apollonius has eight solutions in total, one for each combination of tangency rules of the three circles. The function here finds only one solution per call but can be used to find all eight.
 
-The function is very efficient. It has time complexity of O(1) and does not call any trigonometric functions.
+The function is very efficient. It has time complexity of *O(1)* and does not call any trigonometric functions.
 
 [Installation](#installation) – [Usage](#usage) – [API](#api) – [Contribute](#contribute)
 
@@ -130,7 +130,7 @@ Throws:
 
 ### apollonius.options.epsilon
 
-The function `apollonius.solve` handles various (special cases)[#specialcases] by switching to alternative algorithms when certain internal variables turn zero. However, the variables rarely exactly equal zero because of rounding errors caused by floating point arithmetics. Computation with near-zero numbers would cause arbitrary results and therefore a margin of safety is needed.
+The function `apollonius.solve` handles various [special cases](#specialcases) by switching to alternative algorithms when certain internal variables turn zero. However, the variables rarely exactly equal zero because of rounding errors caused by floating point arithmetics. Computation with near-zero numbers would cause arbitrary results and therefore a margin of safety is needed.
 
 The `epsilon` defines the numerical margin in which an almost zero number is treated as zero. The default value for epsilon is `1e-10`. You can adjust it if needed. For example, if you know the properties of your circles will be large numbers then a larger epsilon may yield more robust behavior near the special cases:
 
@@ -164,7 +164,7 @@ Thank you.
 
 ## Acknowledgements
 
-The following tools, works, and projects had important role in the development of the package.
+The following tools, projects, and works had important role in the development of the package.
 
 - [Maxima](https://maxima.sourceforge.io/) symbolic algebra tookit was used during formulation of the algorithm.
 - [Affineplane](https://github.com/axelpale/affineplane) geometry library provided reference to data structures and documentation.
