@@ -6,6 +6,7 @@
 [![GitHub Actions workflow status](https://img.shields.io/github/actions/workflow/status/axelpale/apollonius/apollonius-ci.yml)](https://github.com/axelpale/apollonius/actions/workflows/apollonius-ci.yml)
 [![license](https://img.shields.io/npm/l/apollonius)](#license)
 ![NPM Type Definitions](https://img.shields.io/npm/types/apollonius?color=green)
+![Dependency status](https://img.shields.io/badge/dependencies-none-lightgrey)
 
 
 The `apollonius` module provides a function to find a circle that touches three known circles. The resulting circle is an exact solution to the [Problem of Apollonius](https://en.wikipedia.org/wiki/Problem_of_Apollonius) also known as *Apollonian problem*. In other words, it finds a circle that is *tangent to* each of the known three circles. The function is robust: the three known circles can be placed freely and are allowed to overlap each other.
