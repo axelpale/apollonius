@@ -17,7 +17,7 @@ The function is very efficient. It has time complexity of *O(1)* and does not ca
 
 Try out [the demo!](https://axelpale.github.io/apollonius/demo.html)
 
-[Installation](#installation) – [Usage](#usage) – [API](#api) – [Contribute](#contribute)
+[Installation](#installation) – [Usage](#usage) – [Special Cases](#special-cases) – [API](#api) – [Contribute](#contribute)
 
 
 ## Installation
@@ -101,7 +101,7 @@ The circle configuration above is illustrated as follows:
 The resulting circle `c` is internally tangent to the known circles `c1` and `c3` and externally tangent to the known circle `c2`. Note that while the known circles can have negative radii, the output circle always has positive or zero radius.
 
 
-### Special cases
+## Special cases
 
 The fourth circle cannot be found for some configurations of known circles. The function will then return `null`. These configurations may appear when there are:
 
