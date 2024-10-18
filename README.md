@@ -39,19 +39,27 @@ import { solve } from 'apollonius'
 const apollonius = require('apollonius')
 ```
 
-Alternatively, install via a [script tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script). Download the minified UMD bundle `apollonius-1.2.3.min.js` at [releases](https://github.com/axelpale/apollonius/releases) or at [unpkg.com](https://www.unpkg.com/apollonius@1.2.0/dist/apollonius.min.js) and host it alongside your HTML:
+Alternatively, install via a [script tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script). Either download a minified bundle from [releases](https://github.com/axelpale/apollonius/releases) and host it alongside your HTML, like below, or use [Unpkg CDN](https://www.unpkg.com/).
 
 ```
 <script src="apollonius-1.2.3.min.js" defer></script>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     // ...
-    var c = apollonius.solve(...)
+    var circle = apollonius.solve(...)
+    // ...
   })
 </script>
 ```
 
-The bundle declares the global variable `window.apollonius`. Above we wrote the script tag with [defer](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#defer) to allow browsers to continue parsing the page while loading the bundle. The `DOMContentLoaded` event is fired after the browser has loaded all the asset files. The usage of `defer` and `DOMContentLoaded` is not required but is a good convention when your app has lots of assets.
+[Unpkg CDN](https://www.unpkg.com/) URL is good for some quick hands-on development but it is not recommended for production:
+
+```
+<script src="https://www.unpkg.com/apollonius/dist/apollonius.min.js" defer></script>
+...
+```
+
+The bundle declares the global variable `window.apollonius`. Usage of [defer](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#defer) attribute and [DOMContentLoaded](https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event) event is optional although a good convention.
 
 
 ## Usage
