@@ -14,23 +14,50 @@ Because a circle can be either internally or externally tangent to another circl
 
 The function is very efficient. It has time complexity of O(1) and does not call any trigonometric functions.
 
+[Installation](#installation) – [Usage](#usage) – [API](#api) – [Contribute](#contribute)
 
-## Usage
 
-Install via [NPM](https://www.npmjs.com/package/apollonius) or [Yarn](https://yarnpkg.com/package?name=apollonius):
+## Installation
+
+Install via [NPM](https://www.npmjs.com/package/apollonius) or [Yarn](https://yarnpkg.com/package?name=apollonius). The package supports [CommonJS](https://en.wikipedia.org/wiki/CommonJS), [ESM](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules), and [UMD](https://github.com/umdjs/umd) module formats and ships with [TypeScript](https://www.typescriptlang.org/) type declarations.
 
 ```
 $ npm install apollonius
 ```
 
+Then import the module in one of the following ways:
+
+```
+// ESM wildcard
+import * as apollonius from 'apollonius'
+// ESM default export
+import solve from 'apollonius'
+// ESM named export
+import { solve } from 'apollonius'
+// CommonJS module
+const apollonius = require('apollonius')
+```
+
+Alternatively, install via a [script tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script). Download the minified UMD bundle `apollonius-1.2.3.min.js` at [releases](https://github.com/axelpale/apollonius/releases) and host it alongside your HTML:
+
+```
+<script src="apollonius-1.2.3.min.js" defer></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // ...
+    var c = apollonius.solve(...)
+  })
+</script>
+```
+
+The bundle declares the global variable `window.apollonius`. Above we wrote the script tag with [defer](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#defer) to allow browsers to continue parsing the page while loading the bundle. The `DOMContentLoaded` event is fired after the browser has loaded all the asset files. The usage of `defer` and `DOMContentLoaded` is not required but is a good convention when your app has lots of assets.
+
+
+## Usage
+
 Specify your three known circles as `{ x, y, r }` objects, where `x` and `y` are the circle center coordinates and `r` is the radius. Then call the function `apollonius.solve` with the circles. The order of the circles does not matter.
 
 ```
-import * as apollonius from 'apollonius'
-// OR import solve from 'apollonius'
-// OR import { solve } from 'apollonius'
-// OR const apollonius = require('apollonius')
-
 // Prepare three known circles.
 const c1 = { x: 3, y: 2, r: 1 }
 const c2 = { x: 7, y: 2, r: 2 }
