@@ -113,6 +113,8 @@ The fourth circle may reduce to a point (a circle with zero radius) in some conf
 - **identical stacked circles:** The known circles are exact copies of each other. Then the externally tangent circle reduces to an arbitrary point on the shared circumference of the known.
 - **circles intersect at a single point:** The known circles share only one common point. Then the externally tangent circle reduces to that point.
 
+For further details, see [Special cases of Apollonius' problem at Wikipedia](https://en.wikipedia.org/wiki/Special_cases_of_Apollonius%27_problem).
+
 
 ## API
 
@@ -172,7 +174,7 @@ Thank you.
 
 ## Acknowledgements
 
-The following tools, projects, and works had important role in the development of the package.
+The following tools, projects, and works had an important role in the development of the package.
 
 - [Maxima](https://maxima.sourceforge.io/) symbolic algebra tookit was used during formulation of the algorithm.
 - [Affineplane](https://github.com/axelpale/affineplane) geometry library provided reference to data structures and documentation.
