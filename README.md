@@ -8,7 +8,7 @@
 ![NPM Type Definitions](https://img.shields.io/npm/types/apollonius?color=green)
 
 
-The `apollonius` module provides a function to find a circle that touches three known circles. The resulting circle is a solution to the [Problem of Apollonius](https://en.wikipedia.org/wiki/Problem_of_Apollonius). In other words, it finds a circle that is *tangent to* each of the known three circles. The function is robust: the three known circles can be placed freely and are allowed to overlap each other.
+The `apollonius` module provides a function to find a circle that touches three known circles. The resulting circle is an exact solution to the [Problem of Apollonius](https://en.wikipedia.org/wiki/Problem_of_Apollonius). In other words, it finds a circle that is *tangent to* each of the known three circles. The function is robust: the three known circles can be placed freely and are allowed to overlap each other.
 
 Because a circle can be either internally or externally tangent to another circle, the problem of Apollonius has eight solutions in total, one for each combination of tangency rules of the three circles. The function here finds only one solution per call but can be used to find all eight.
 
@@ -38,7 +38,7 @@ import { solve } from 'apollonius'
 const apollonius = require('apollonius')
 ```
 
-Alternatively, install via a [script tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script). Download the minified UMD bundle `apollonius-1.2.3.min.js` at [releases](https://github.com/axelpale/apollonius/releases) and host it alongside your HTML:
+Alternatively, install via a [script tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script). Download the minified UMD bundle `apollonius-1.2.3.min.js` at [releases](https://github.com/axelpale/apollonius/releases) or at [unpkg.com](https://www.unpkg.com/apollonius@1.2.0/dist/apollonius.min.js) and host it alongside your HTML:
 
 ```
 <script src="apollonius-1.2.3.min.js" defer></script>
