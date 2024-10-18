@@ -128,7 +128,7 @@
 
           // Skip cases where the tangent circle cannot be drawn.
           if (tan && tan.r >= 0) {
-            tan.color = 'gray'
+            tan.color = '#dddddd'
             tan.lineDash = [2, 2]
             drawQueue.push(tan)
             info.innerHTML = 'Radius: ' + tan.r.toFixed(0)
