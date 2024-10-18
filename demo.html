@@ -19,7 +19,7 @@
         color: #999;
       }
     </style>
-    <script src="dist/apollonius-1.1.1.min.js"></script>
+    <script src="https://www.unpkg.com/apollonius@1.2.0/dist/apollonius.min.js" defer></script>
 </head>
 <body>
     <canvas id="canvas" width="500" height="500" style="border:1px solid #000000;"></canvas>
@@ -62,6 +62,7 @@
       <a href="https://www.akselipalen.com">Akseli Palén</a>, 2024.
     </p>
     <script>
+      document.addEventListener('DOMContentLoaded', () => {
         const findApolloniusTangent = apollonius.solve
 
         const circles = [
@@ -211,6 +212,7 @@
 
         // Initial drawing
         refresh()
+      })
     </script>
 </body>
 </html>

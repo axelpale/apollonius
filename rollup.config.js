@@ -1,6 +1,4 @@
 import terser from '@rollup/plugin-terser'
-// NOTE Experimental JSON import
-import { default as pjson } from './package.json' with { type: 'json' }
 
 export default {
   input: 'index.js',
@@ -11,7 +9,7 @@ export default {
       exports: 'named'
     },
     {
-      file: `dist/${pjson.name}-${pjson.version}.min.js`,
+      file: 'dist/apollonius.min.js',
       format: 'umd',
       name: 'apollonius',
       exports: 'named',
