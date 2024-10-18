@@ -22,7 +22,7 @@
     <script src="https://www.unpkg.com/apollonius@1.2.0/dist/apollonius.min.js" defer></script>
 </head>
 <body>
-    <canvas id="canvas" width="500" height="500" style="border:1px solid #000000;"></canvas>
+    <canvas id="canvas" width="500" height="500" style="border: 1px solid #000000;"></canvas>
     <form>
       <p id="info" class="info"></p>
       <label for="aradius">Radius of the <span style="color: red;">Red</span> Circle:</label>
@@ -50,15 +50,12 @@
       <input type="radio" id="cinternal" name="ctangency" value="internal" />
       <label for="cinternal">internal</label>
     </form>
-    <p style="max-width: 500px;">&#9432; This interactive app demonstrates a function
+    <p style="max-width: 500px;">&#9432; This interactive app demonstrates an algorithm
       that finds a circle (<span style="color: gray;">gray</span>) that is tangent to, i.e touching, three known circles
       (<span style="color: red;">red</span>, <span style="color: green;">green</span>, <span style="color: blue;">blue</span>).
       You can drag the known circles around using the mouse or touch.
       The result is one of the eight solutions to the <a href="https://en.wikipedia.org/wiki/Problem_of_Apollonius">problem of Apollonius</a>.
-      The function will be a part of a circle packing algorithm.
-      The resulting circle packing can then be applied to data visualization.
-      <a href="https://maxima.sourceforge.io/">Maxima</a> was used during formulation.
-      Some ChatGPT was used to generate an empty canvas app.
+      The algorithm can be used for circle packing, node-link graph layouts, and data visualization in general.
       <a href="https://www.akselipalen.com">Akseli Palén</a>, 2024.
     </p>
     <script>

@@ -8,7 +8,7 @@
 ![NPM Type Definitions](https://img.shields.io/npm/types/apollonius?color=green)
 
 
-The `apollonius` module provides a function to find a circle that touches three known circles. The resulting circle is an exact solution to the [Problem of Apollonius](https://en.wikipedia.org/wiki/Problem_of_Apollonius). In other words, it finds a circle that is *tangent to* each of the known three circles. The function is robust: the three known circles can be placed freely and are allowed to overlap each other.
+The `apollonius` module provides a function to find a circle that touches three known circles. The resulting circle is an exact solution to the [Problem of Apollonius](https://en.wikipedia.org/wiki/Problem_of_Apollonius) also known as *Apollonian problem*. In other words, it finds a circle that is *tangent to* each of the known three circles. The function is robust: the three known circles can be placed freely and are allowed to overlap each other.
 
 Because a circle can be either internally or externally tangent to another circle, the problem of Apollonius has eight solutions in total, one for each combination of tangency rules of the three circles. The function here finds only one solution per call but can be used to find all eight.
 
@@ -159,6 +159,15 @@ Run only linter:
     $ npm run lint
 
 Thank you.
+
+
+## Acknowledgements
+
+The following tools, works, and projects had important role in the development of the package.
+
+- [Maxima](https://maxima.sourceforge.io/) symbolic algebra tookit was used during formulation of the algorithm.
+- [Affineplane](https://github.com/axelpale/affineplane) geometry library provided reference to data structures and documentation.
+- [A theorem on circle configurations](https://arxiv.org/abs/0706.0372) by *Jerzy Kocik* provided general insight to the theory of the problem and its special cases.
 
 
 ## License
