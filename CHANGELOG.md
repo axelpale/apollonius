@@ -6,6 +6,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [1.2.1] - 2024-10-21
+
+### Added
+
+- More documentation on special cases (#8)
+- Add a link to the demo (#4)
+- More tests
+- More package keywords
+
+### Changed
+
+- Improved introduction
+- Improved installation docs
+- Improved API docs
+
+### Fixed
+
+- Repair demo interaction precedence when dragging overlapping circles (#9)
+
+
 ## [1.2.0] - 2024-10-18
 
 ### Added
