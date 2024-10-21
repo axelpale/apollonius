@@ -189,6 +189,7 @@ The following tools, projects, and works had an important role in the developmen
 
 - [Maxima](https://maxima.sourceforge.io/) symbolic algebra tookit was used during formulation of the algorithm.
 - [Affineplane](https://github.com/axelpale/affineplane) geometry library provided reference to data structures and documentation.
+- [Affineplane Circlepack](https://github.com/axelpale/affineplane-circlepack) was the first application to use the `apollonius` library.
 - [A theorem on circle configurations](https://arxiv.org/abs/0706.0372) by *Jerzy Kocik* provided general insight to the theory of the problem and its special cases.
 
 
