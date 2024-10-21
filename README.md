@@ -97,7 +97,6 @@ const c = apollonius.solve(c1, c2, c3)
 The circle configuration above is illustrated as follows:
 
 ![Figure: Internally Tangent Circles](doc/example_internal.png "The result circle must be internally tangent to the circles 1 and 3 and externally tangent to the circle 2.")
-
 _**Figure:** The resulting circle `c` is internally tangent to the known circles `c1` and `c3` and externally tangent to the known circle `c2`._
 
 Note that while the known circles can have negative radii, the output circle always has positive or zero radius.
@@ -113,7 +112,6 @@ The fourth circle cannot be found for some configurations of known circles. The 
 These unsolvable configurations are illustrated below.
 
 ![Figure: special cases: nested circles and circles along a line](doc/example_special_case_unsolvable.png "a) nested circles; b) circles along a line")
-
 _**Figure:** cases of unavailable solution and infinite-radius solution. The wicks mark the tangency rules of the circles. A) no tangent circle can be found that is tangent to a circle and two nested circles at the same time. B) sometimes the solution circle becomes infinite._
 
 In addition, the fourth circle may reduce to a point (a circle with zero radius) in some configurations of known circles. These configurations may appear when there are:
@@ -124,7 +122,6 @@ In addition, the fourth circle may reduce to a point (a circle with zero radius)
 These zero radius yielding configurations are illustrated below.
 
 ![Figure: special cases: stacked circles and intersecting circles](doc/example_special_case_point-like.png "a) stacked circles; b) circles intersect at a point")
-
 _**Figure:** cases of infite number of solutions and a zero-radius solution. A) In theory, a stack of three identical circles have an infinite number of solutions of arbitrary radius. The function will arbitrarily pick a zero-radius point at the common circumference. B) Unique zero-radius solution can be found at the mutual intersection point of all three circles._
 
 For further details, see [Special cases of Apollonius' problem](https://en.wikipedia.org/wiki/Special_cases_of_Apollonius%27_problem) at Wikipedia.
