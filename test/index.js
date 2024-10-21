@@ -56,6 +56,14 @@ test('basic apollonius', (t) => {
 
 test('bad input circles', (t) => {
   t.throws(() => {
+    apollonius()
+  }, 'should detect missing circles')
+
+  t.throws(() => {
+    apollonius({ x: 0, y: 0, r: 2 }, { x: 9, y: -2, r: 3 })
+  }, 'should detect missing third circle')
+
+  t.throws(() => {
     apollonius({}, {}, {})
   }, 'should detect bad circles')
 
@@ -89,6 +97,10 @@ test('linearly dependent apollonius', (t) => {
   const cm = apollonius({ x: 20, y: 0, r: 5 }, { x: 0, y: 0, r: 5 }, { x: 10, y: 0, r: 3 })
   // Read rough limits from a drawing.
   t.deepEqual(cm, ch, 'should be equivalent to the first')
+
+  // Three points along a line
+  const cl = apollonius({ x: 0, y: 0, r: 0 }, { x: 2, y: 0, r: 0 }, { x: 4, y: 0, r: 0 })
+  t.equal(cl, null, 'should become a line thus null')
 
   t.end()
 })
