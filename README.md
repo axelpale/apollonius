@@ -112,7 +112,7 @@ The fourth circle cannot be found for some configurations of known circles. The 
 These unsolvable configurations are illustrated below.
 
 ![Figure: special cases: nested circles and circles along a line](doc/example_special_case_unsolvable.png "a) nested circles; b) circles along a line")
-_**Figure:** cases of unavailable solution and infinite-radius solution. The wicks mark the tangency rules of the circles. A) no tangent circle can be found that is tangent to a circle and two nested circles at the same time. B) sometimes the solution circle becomes infinite._
+_**Figure:** cases of unavailable solution and infinite-radius solution. The wicks mark the tangency rules of the circles. A) no tangent circle can be found that is tangent to a circle and two nested circles at the same time. B) if the tangency points form a straight line then the solution circle radius becomes infinite._
 
 In addition, the fourth circle may reduce to a point (a circle with zero radius) in some configurations of known circles. These configurations may appear when there are:
 
@@ -137,9 +137,9 @@ Parameters:
 - c1
   - an object `{ x, y, r }`, representing a circle in 2D. The properties `x`, `y`, and `r` must be real numbers and are allowed to be negative.
 - c2
-  - an object `{ x, y, r }`
+  - an object `{ x, y, r }`, representing a circle in 2D. The properties `x`, `y`, and `r` must be real numbers and are allowed to be negative.
 - c3
-  - an object `{ x, y, r }`
+  - an object `{ x, y, r }`, representing a circle in 2D. The properties `x`, `y`, and `r` must be real numbers and are allowed to be negative.
 
 Returns:
 - an object `{ x, y, r }` where `r` is always positive or zero.
