@@ -98,7 +98,9 @@ The circle configuration above is illustrated as follows:
 
 ![Figure: Internally Tangent Circles](doc/example_internal.png "The result circle must be internally tangent to the circles 1 and 3 and externally tangent to the circle 2.")
 
-The resulting circle `c` is internally tangent to the known circles `c1` and `c3` and externally tangent to the known circle `c2`. Note that while the known circles can have negative radii, the output circle always has positive or zero radius.
+_**Figure:** The resulting circle `c` is internally tangent to the known circles `c1` and `c3` and externally tangent to the known circle `c2`._
+
+Note that while the known circles can have negative radii, the output circle always has positive or zero radius.
 
 
 ## Special cases
@@ -108,9 +110,11 @@ The fourth circle cannot be found for some configurations of known circles. The 
 - **nested circles:** a circle cannot be internally or externally tangent two or more nested circles at the same time.
 - **identical circles along a line:** when three same-size circles are arranged along a straight line, the radius of the tangent circle would go to infinity and thus its radial center could not be defined.
 
-These unsolvable configurations are illustrated below. The wicks mark the tangency rules of the circles.
+These unsolvable configurations are illustrated below.
 
 ![Figure: special cases: nested circles and circles along a line](doc/example_special_case_unsolvable.png "a) nested circles; b) circles along a line")
+
+_**Figure:** cases of unavailable solution and infinite-radius solution. The wicks mark the tangency rules of the circles. A) no tangent circle can be found that is tangent to a circle and two nested circles at the same time. B) sometimes the solution circle becomes infinite._
 
 In addition, the fourth circle may reduce to a point (a circle with zero radius) in some configurations of known circles. These configurations may appear when there are:
 
@@ -120,6 +124,8 @@ In addition, the fourth circle may reduce to a point (a circle with zero radius)
 These zero radius yielding configurations are illustrated below.
 
 ![Figure: special cases: stacked circles and intersecting circles](doc/example_special_case_point-like.png "a) stacked circles; b) circles intersect at a point")
+
+_**Figure:** cases of infite number of solutions and a zero-radius solution. A) In theory, a stack of three identical circles have an infinite number of solutions of arbitrary radius. The function will arbitrarily pick a zero-radius point at the common circumference. B) Unique zero-radius solution can be found at the mutual intersection point of all three circles._
 
 For further details, see [Special cases of Apollonius' problem](https://en.wikipedia.org/wiki/Special_cases_of_Apollonius%27_problem) at Wikipedia.
 
