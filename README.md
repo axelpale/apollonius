@@ -193,6 +193,13 @@ The following tools, projects, and works had an important role in the developmen
 - [A theorem on circle configurations](https://arxiv.org/abs/0706.0372) by *Jerzy Kocik* provided general insight to the theory of the problem and its special cases.
 
 
+## Versioning
+
+The versioning convention of the package follows [Semantic Versioning 2.0.0](http://semver.org/).
+
+
 ## License
 
 The apollonius source code is released under [MIT](LICENSE) license.
+
+The apollonius source code is open source and free to use. It is released under [MIT license](LICENSE).
