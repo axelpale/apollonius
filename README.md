@@ -17,7 +17,7 @@ The function is very efficient. It has time complexity of *O(1)* and does not ca
 
 Try out [the demo!](https://axelpale.github.io/apollonius/demo.html)
 
-[Installation](#installation) – [Usage](#usage) – [Special Cases](#special-cases) – [API](#api) – [Contribute](#contribute)
+[Installation](#installation) – [Usage](#usage) – [Special Cases](#special-cases) – [API](#api) – [Contribute](#contribute) - [GitHub](https://github.com/axelpale/apollonius)
 
 
 ## Installation
