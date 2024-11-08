@@ -11,7 +11,10 @@
     "require": "./dist/index.cjs"
   },
   "files": [
-    "dist"
+    "dist",
+    "CHANGELOG.md",
+    "index.d.ts",
+    "index.js"
   ],
   "scripts": {
     "build": "rollup --config",
