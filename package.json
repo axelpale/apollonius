@@ -20,7 +20,7 @@
     "build": "rollup --config",
     "lint": "standard",
     "test:unit": "node test/index.js",
-    "test:types": "echo \"Expect error:\" && ! tsc test/types.ts",
+    "test:types": "tsc test/types.ts",
     "test:cjs": "node test/commonjs.cjs",
     "test": "npm run lint && npm run test:types && npm run build && npm run test:cjs && npm run test:unit",
     "release": "npm test && npm publish"
